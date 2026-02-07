@@ -5,11 +5,15 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 
+const BRACKET_BASE_URL =
+  process.env.NEXT_PUBLIC_BRACKET_BASE_URL ||
+  "https://bracket.lucyontheground.com";
+
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/dashboard", label: "Dashboard" },
-  { href: "/dashboard/brackets", label: "Bracket Madness" },
-  { href: "/biggest-night/ballot", label: "Biggest Night" },
+  { href: `${BRACKET_BASE_URL}/dashboard`, label: "Dashboard" },
+  { href: `${BRACKET_BASE_URL}/dashboard/brackets`, label: "Bracket Madness" },
+  { href: `${BRACKET_BASE_URL}/biggest-night/ballot`, label: "Biggest Night" },
 ];
 
 const SOCIALS = [
@@ -33,6 +37,7 @@ export default function StickyHeader() {
   const inactiveClass = "text-[#FEE689] opacity-80 hover:opacity-100 transition-colors font-semibold";
 
   function isActive(href: string) {
+    if (href.startsWith("http")) return false;
     if (href === "/") return pathname === "/";
     return pathname === href || pathname?.startsWith(href + "/") || pathname?.startsWith(href);
   }

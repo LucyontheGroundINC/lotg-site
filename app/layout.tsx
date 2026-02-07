@@ -19,6 +19,27 @@ export const metadata: Metadata = {
   },
   description:
     "Pop culture, romcoms, games, and thoughts I can’t keep to myself.",
+  icons: {
+    icon: [
+      {
+        url: "/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/favicon%20(512%20x%20512%20px).png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+  },
   openGraph: {
     title: "Lucy On The Ground",
     description:
