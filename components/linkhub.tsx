@@ -57,7 +57,7 @@ export default function LinkHub({ latestPost }: LinkHubProps) {
   }, []);
 
   const featuredShow = currentlyData.whatImInto?.watching?.[0]?.title || "Summer House";
-  const featuredBook = currentlyData.whatImInto?.reading?.[0]?.title || "Smut";
+  const featuredBook = currentlyData.whatImInto?.reading?.[0]?.title || "Romance";
 
   return (
     <div className="min-h-screen bg-transparent text-[#0A2041]">
