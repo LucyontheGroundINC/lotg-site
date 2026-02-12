@@ -11,9 +11,7 @@ const BRACKET_BASE_URL =
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: `${BRACKET_BASE_URL}/dashboard`, label: "Dashboard" },
-  { href: `${BRACKET_BASE_URL}/dashboard/brackets`, label: "Bracket Madness" },
-  { href: `${BRACKET_BASE_URL}/biggest-night/ballot`, label: "Biggest Night" },
+  { href: `${BRACKET_BASE_URL}/dashboard`, label: "Games" },
 ];
 
 const SOCIALS = [
@@ -61,42 +59,42 @@ export default function StickyHeader() {
           />
         </Link>
 
-        {/* Desktop Navigation - centered */}
-        <nav className="hidden md:flex items-center gap-6 text-sm flex-1 justify-center">
-          {NAV_LINKS.map((link, idx) => (
-            <div key={link.href} className="flex items-center gap-6">
-              <Link
-                href={link.href}
-                className={isActive(link.href) ? activeClass : inactiveClass}
+        {/* Right-side links + socials */}
+        <div className="hidden md:flex items-center gap-5 flex-shrink-0 ml-auto">
+          <nav className="flex items-center gap-4 text-sm">
+            {NAV_LINKS.map((link, idx) => (
+              <div key={link.href} className="flex items-center gap-4">
+                <Link
+                  href={link.href}
+                  className={isActive(link.href) ? activeClass : inactiveClass}
+                >
+                  {link.label}
+                </Link>
+                {idx < NAV_LINKS.length - 1 && (
+                  <span className="text-[#FEE689]/30">|</span>
+                )}
+              </div>
+            ))}
+          </nav>
+          <div className="flex items-center gap-3">
+            {SOCIALS.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                title={social.label}
+                className="relative w-7 h-7 hover:opacity-70 transition-opacity"
               >
-                {link.label}
-              </Link>
-              {idx < NAV_LINKS.length - 1 && (
-                <span className="text-[#FEE689]/30">|</span>
-              )}
-            </div>
-          ))}
-        </nav>
-
-        {/* Social icons on right */}
-        <div className="hidden md:flex items-center gap-3 flex-shrink-0">
-          {SOCIALS.map((social) => (
-            <a
-              key={social.label}
-              href={social.href}
-              target="_blank"
-              rel="noreferrer"
-              title={social.label}
-              className="relative w-7 h-7 hover:opacity-70 transition-opacity"
-            >
-              <Image
-                src={social.icon}
-                alt={social.label}
-                fill
-                className="object-contain"
-              />
-            </a>
-          ))}
+                <Image
+                  src={social.icon}
+                  alt={social.label}
+                  fill
+                  className="object-contain"
+                />
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
